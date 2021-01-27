@@ -1,0 +1,161 @@
+﻿<!-- Created: 29/10/2020 by Gaël -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN">
+<html>
+  <head>
+    <title>Les boucles Python</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="PyScripter">
+    <link rel="stylesheet" href="css4.css" />
+  </head>
+  <body>
+
+<h1 id="haut de page">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Les boucles en Python :</u></h1>
+<a href="#bas de page"><img src="bas.jpg" width="40" height="40"></a></br>
+
+<p>Il existe deux sortes d'instructions pour réaliser des boucles :</p>
+<ul>
+    <li>While</li>
+    <li>For</li>
+</ul> <!-- La balise <ol> est une balise oderlist elle permet de faire une liste numérotée -->
+
+<h2>La boucle "While" (tant que) :</h2>
+
+<h3>Défintion et syntaxe</h3>
+
+<p>
+Le principe de la boucle while, c’est d’exécuter un bloc d’instructions tant que une condition donnée est vraie
+</p>
+
+<h4><u>Exemple :</u></h4>
+<code>
+x = 1<br/>
+while x&lt;5 :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print (x)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = x + 1<br/>
+print('Fini !')
+</code>
+<p>
+Ici tant que la condition x&lt;5 est respectée, on affiche la valeur de x puis on lui ajoute 1<br/>
+Lorsque la condition n'est plus respectée (dans ce cas pour x=5) alors la boucle s'achève<br/>
+On réalise donc la suite du programme et on affiche Fini !
+</p>
+<h3>Exemple : décomposition d'un nombre en ses symboles</h3>
+<h4>Etude du problème</h4>
+<p>Décomposons le nombre 7843</p>
+<p>Pour obtenir le chiffre (symbole) on utilisera : <br/></p>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Une opération de division entière 7843 = 784 x 10 + 3 </code><br/><br/>
+
+Pour les unités : <br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;7843%10=3 (3 est le reste)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;7843//10=784 (784 est le quotient)<br/><br/>
+
+Pour les dizaines : <br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;784%10=4 (4 est le reste)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;784//10=78 (78 est le quotient)<br/><br/>
+
+Pour les centaines : <br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;78%10=8 (8 est le reste)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;78//10=7 (7 est le quotient)<br/><br/>
+
+<h4>Résolution en utilisant la boucle While</h4>
+
+<code>
+nombre = int(input("Donnez-moi un nombre nombre entier"))<br/>
+listeSymbole = []<br/><br/>
+
+while nombre != 0 :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;reste = nombre % 10<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre = nombre // 10<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;#listeSymbole.append(reste) -&gt; ne peut pas changer l'ordre<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;listeSymbole = [reste] + listeSymbole<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Nombre =", nombre, "     et reste =", reste)<br/>
+</code>
+
+<p>
+En plus de dsécomposer le nombre et donner les unités, dizaines, centaines, ... par le biais des quotients et des restes comme vu précédement,<br/>
+Si l'on entre le nombre 173 par exemple alors on aura le premier reste qui correspond au unité, le deuxième au dizaines,...<br/>
+On obtiendra donc :<br/>
+Nombre = 17      et reste = 3<br/>
+Nombre = 1      et reste = 7<br/>
+Nombre = 0      et reste = 1
+</p>
+
+<h2>La boucle "For" (pour) :</h2>
+
+<p>Lorsque l’on souhaite répéter un nombre donné de fois la même instruction ou le même bloc d’instructions, la commande for est la plus appropriée.</p>
+
+<h4><u>Exemple :</u></h4>
+
+<p>Admettons que l’on veuille afficher les carrés des entiers de 1 à 7 :. Voici ce que l’on peut faire.</p>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,8):  (pour i allant de 1 à 7)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("i**2")
+</code>
+
+<p>Prennons un autre exemple :<br/>
+Calculons la somme des premiers entiers. Disons ici que l’on s’arrête à 30.</p>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;S = 0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1, 31):   # pour i allant de 1 à 30<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S = S + i<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print(S)
+</code>
+
+<h2>Exemple d'association des deux boucles :</h2>
+
+<code>
+nombre = input("Donnez-moi un nombre nombre entier")<br/>
+nombre=int(nombre)<br/>
+def decompNombre (nombre: int , base : int ) -> list :<br/><br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;listeSymbole = []<br/><br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;while nombre != 0 :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reste = nombre % base<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nombre = nombre // base<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listeSymbole = [reste] + listeSymbole<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Nombre =", nombre, "     et reste =", reste)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;return listeSymbole<br/><br/>
+
+for base in range (2,11) :<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print (nombre, " = en base", base, " : ")<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;decompNombre(nombre, base)<br/>
+</code>
+
+<p>
+Cet algorithme réutilise la boucle while vue tout à l'heure mais associe aussi un boucle for.<br/>
+En effet on se sert de la variable nombre ainsi que la la fonction decompNombre pour convertir un nombre choisi vers une base différente grace à la boucle for.<br/>
+</p>
+
+<h1>Pour conclure :</h1>
+<h4>
+<p>
+Pour conclure nous pouvons dire que la boucle while sera plus adaptée lorsque la durée de la boucle est indéfinie. Elle peut être infinie auquel cas ous n'aurons jamais de résultat final<br/>
+Tandis que la boucle for permet quand à elle de répondre à une demande carctérisé par une durée définie à l'avance. Elle peut elle aussi être infinie si l'intervalle choisi l'est aussi
+</p>
+
+<aside>
+  <a href="#haut de page"><img src="haut.jpg" width="40" height="40"></a>
+</aside>
+
+<footer id="bas de page"></footer>
+
+<h4 style="color: black"><u>Liens vers d'autres pages de mon site :</u></h4>
+
+<ul>
+
+<li><a href="Html.htm"> Le language Html</a>
+<li><a href="CSS.htm"> Le language CSS</a>
+<li><a href="algoPython.htm">Python et l'Algo</li>
+<li><a href="videos.htm">Quelques vidéos explicatives</li>
+<li><a href="Index.htm"> Retour à l'index</a>
+
+</ul>
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+﻿p,li,a
+{
+    color: blue;
+} /* ecriture en bleu*/
+
+h1,h3
+{
+    color: red;
+}/* titre en rouge*/
+
+body
+{
+    background-color: lightgrey; /* Le fond de la page sera noir */
+}
+/* On travaille sur la page entière */
